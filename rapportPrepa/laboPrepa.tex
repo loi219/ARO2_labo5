@@ -149,8 +149,36 @@
 \end{titlepage}
 
 \section{Objectifs du laboratoire}
+\subsection{Fonctionnement}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{src/MULPIPE.png}
+    \captionof{figure}{Multiplication}
+    \label{fig:mulpipe}
+\end{figure}
+Une mulitplication est effectuée avec deux opérandes, une sur 5 bits et une sur 3 bits. Ainsi, ici, le \textbf{mulpipe} est découpé en trois étapes. 
+Globalement, le fonctionnement est le suivant: à chaque étape, un bit de l'\textbf{op\_3} (en allant du bit de poids faible jusqu'au bit de poids fort) va déterminer si la valeur du registre correspondant à cette étape (nommé "étage" dans ce circuit) va être de 0x0 (0) ou s'il va prendre la valeur de l'\textbf{op\_5}, décalée sur la gauche d'un nombre de bits correspondant à l'indice du bit observé sur l'\textbf{op\_3}. Les valeurs de chaque étage vont être additionnées pour arriver à une valeur finale. Voir le chronogramme plus bas pour un exemple.
 
+\subsection{Chronogramme}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{src/CHRONO_PREPA_COL.png}
+    \captionof{figure}{Chronogramme}
+    \label{fig:chrono}
+\end{figure}
+Chaque couleur correspond au suivi, dans le \textbf{mulpipe}, de valeurs entrées. Les lignes rouges mettent en évidence les valeurs présentes dans chaque étage. La ligne noire sépare les valeurs dans le main des détail du \textbf{mulpipe}. 
+Pour mieux comprendre ces étapes, voici un exemple avec les valeurs 3 (0b00011) et 2 (0b010) pour les opérandes \textbf{op\_5} et \textbf{op\_3} (cet exemple correspond au valeurs surlignées en bleu foncé dans le chronogramme).
+\subsubsection{Étape 1}
+Le bit 0 de l'\textbf{op\_3} est à zéro. La valeur choisie entre 0b0 et 0b00011 pour l'étage 1 est donc 0b0.
+\subsubsection{Étape 2}
+Le bit 1 de l'\textbf{op\_3} est à 1. la valeur choisie entre 0b0 et 0b000110 (valeur de l'\textbf{op\_5} à laquelle est ajoutée un bit à 0) est donc 0b000110. La valeur écrite dans l'étage 2 est donc cette valeur, additionnée à celle qui était présente dans l'étage 1, et donc 0b000110.
+\subsubsection{Étape 3}
+Le bit 2 de l'\textbf{op\_3} est à 0. La valeur choisie entre 0b0 et 0b0001100 (valeur de l'\textbf{op\_5} à laquelle est ajoutée deux bits à 0) est donc 0b0.
+La valeur écrite dans l'étage 3 est donc cette valeur, additionnée à celle qui était présente dans l'étage 2, et donc 0b000110.
+
+La valeur finale est de 0b000110, donc 6.
 
 \section{Conclusion}
+Ce laboratoire nous a permis de comprendre le fonctionnement du pipeline grâce à un exemple simple, et de nour préparer pour le laboratoire suivant, qui traitera les pipelines de façon plus développée.
 
 \end{document}
