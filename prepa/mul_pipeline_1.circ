@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="3e674c8e645115f719109a54532cbcabf9f75845" source="2.13.24.t" version="1.0">
+<project integrity="c107f9085c0330a973d99f5ae812cfe4c00e7e4a" source="2.13.24.t" version="1.0">
 This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 <lib desc="#Wiring" name="0">
     <tool name="Splitter">
@@ -55,44 +55,44 @@ This file is intended to be loaded by Logisim-evolution (https://github.com/reds
   <lib desc="#I/O" name="5"/>
   <lib desc="#HDL-IP" name="6">
     <tool name="VHDL Entity">
-      <a name="content">--------------------------------------------------------------------------------&#13;
--- HEIG-VD, institute REDS, 1400 Yverdon-les-Bains&#13;
--- Project :&#13;
--- File    :&#13;
--- Autor   :&#13;
--- Date    :&#13;
---&#13;
---------------------------------------------------------------------------------&#13;
--- Description :&#13;
---&#13;
---------------------------------------------------------------------------------&#13;
-&#13;
-library ieee;&#13;
-  use ieee.std_logic_1164.all;&#13;
-  --use ieee.numeric_std.all;&#13;
-&#13;
-entity VHDL_Component is&#13;
-  port(&#13;
-  ------------------------------------------------------------------------------&#13;
-  --Insert input ports below&#13;
-    horloge_i  : in  std_logic;                    -- input bit example&#13;
-    val_i      : in  std_logic_vector(3 downto 0); -- input vector example&#13;
-  ------------------------------------------------------------------------------&#13;
-  --Insert output ports below&#13;
-    max_o      : out std_logic;                    -- output bit example&#13;
-    cpt_o      : out std_logic_Vector(3 downto 0)  -- output vector example&#13;
-    );&#13;
-end VHDL_Component;&#13;
-&#13;
---------------------------------------------------------------------------------&#13;
---Complete your VHDL description below&#13;
-architecture type_architecture of VHDL_Component is&#13;
-&#13;
-&#13;
-begin&#13;
-&#13;
-&#13;
-end type_architecture;&#13;
+      <a name="content">--------------------------------------------------------------------------------
+-- HEIG-VD, institute REDS, 1400 Yverdon-les-Bains
+-- Project :
+-- File    :
+-- Autor   :
+-- Date    :
+--
+--------------------------------------------------------------------------------
+-- Description :
+--
+--------------------------------------------------------------------------------
+
+library ieee;
+  use ieee.std_logic_1164.all;
+  --use ieee.numeric_std.all;
+
+entity VHDL_Component is
+  port(
+  ------------------------------------------------------------------------------
+  --Insert input ports below
+    horloge_i  : in  std_logic;                    -- input bit example
+    val_i      : in  std_logic_vector(3 downto 0); -- input vector example
+  ------------------------------------------------------------------------------
+  --Insert output ports below
+    max_o      : out std_logic;                    -- output bit example
+    cpt_o      : out std_logic_Vector(3 downto 0)  -- output vector example
+    );
+end VHDL_Component;
+
+--------------------------------------------------------------------------------
+--Complete your VHDL description below
+architecture type_architecture of VHDL_Component is
+
+
+begin
+
+
+end type_architecture;
 </a>
     </tool>
   </lib>
@@ -210,17 +210,10 @@ end TCL_Generic;&#13;
     <wire from="(450,160)" to="(530,160)"/>
     <wire from="(270,290)" to="(530,290)"/>
     <wire from="(450,70)" to="(450,160)"/>
-    <comp lib="0" loc="(760,160)" name="Probe">
+    <comp lib="0" loc="(460,70)" name="Probe">
       <a name="facing" val="west"/>
       <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="0" loc="(120,130)" name="Clock">
-      <a name="label" val="sysclk"/>
-      <a name="owner" val="autogen:prodis"/>
-      <a name="date" val="18.02.15 14:34:16"/>
-      <a name="version" val="2.13.5"/>
-      <a name="uuid" val="7f44183e-bff8-4598-8e52-476fbc1a4e59"/>
-      <a name="integrity" val="ddc250959077f3ce2f0f373d6a177704e370921a"/>
+      <a name="label" val="Op_5"/>
     </comp>
     <comp lib="0" loc="(250,250)" name="Clock">
       <a name="highDuration" val="4"/>
@@ -232,6 +225,18 @@ end TCL_Generic;&#13;
       <a name="uuid" val="dfc734d8-e0b3-40ce-bf86-fd2f316467f6"/>
       <a name="integrity" val="44692bfce9d4b90b901e34cc6c986a8c932dc83d"/>
     </comp>
+    <comp lib="0" loc="(120,130)" name="Clock">
+      <a name="label" val="sysclk"/>
+      <a name="owner" val="autogen:prodis"/>
+      <a name="date" val="18.02.15 14:34:16"/>
+      <a name="version" val="2.13.5"/>
+      <a name="uuid" val="7f44183e-bff8-4598-8e52-476fbc1a4e59"/>
+      <a name="integrity" val="ddc250959077f3ce2f0f373d6a177704e370921a"/>
+    </comp>
+    <comp lib="8" loc="(186,359)" name="Text">
+      <a name="text" val="ARO2 - Labo préparatoire Pipeline /MSR 03.05'2016"/>
+      <a name="font" val="SansSerif plain 12"/>
+    </comp>
     <comp lib="0" loc="(250,290)" name="Pin">
       <a name="label" val="reset"/>
       <a name="owner" val="aro2sol"/>
@@ -240,21 +245,16 @@ end TCL_Generic;&#13;
       <a name="uuid" val="e9241cca-8eba-41af-8931-49e616dfdc3f"/>
       <a name="integrity" val="75092d0f3095849fcf5d700f5edec6146c5c5e99"/>
     </comp>
-    <comp lib="0" loc="(460,70)" name="Probe">
-      <a name="facing" val="west"/>
-      <a name="radix" val="10unsigned"/>
-      <a name="label" val="Op_5"/>
-    </comp>
     <comp loc="(670,160)" name="mulpipe"/>
-    <comp loc="(450,160)" name="opgen"/>
     <comp lib="0" loc="(520,70)" name="Probe">
       <a name="facing" val="west"/>
       <a name="radix" val="10unsigned"/>
       <a name="label" val="Op_3"/>
     </comp>
-    <comp lib="8" loc="(186,359)" name="Text">
-      <a name="text" val="ARO2 - Labo préparatoire Pipeline /MSR 03.05'2016"/>
-      <a name="font" val="SansSerif plain 12"/>
+    <comp loc="(450,160)" name="opgen"/>
+    <comp lib="0" loc="(760,160)" name="Probe">
+      <a name="facing" val="west"/>
+      <a name="radix" val="10unsigned"/>
     </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
@@ -410,160 +410,8 @@ end TCL_Generic;&#13;
     <wire from="(760,310)" to="(770,310)"/>
     <wire from="(520,270)" to="(530,270)"/>
     <wire from="(630,220)" to="(640,220)"/>
-    <comp lib="0" loc="(220,400)" name="Splitter">
-      <a name="fanout" val="1"/>
-      <a name="incoming" val="3"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:13:16"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="92bd6120-acb7-43cb-8003-602eaf431e71"/>
-      <a name="integrity" val="2ac4d3e46c808368e5e40b25fba6238b7b0eefa3"/>
-      <a name="bit1" val="none"/>
-      <a name="bit2" val="none"/>
-    </comp>
-    <comp lib="2" loc="(290,240)" name="Multiplexer">
-      <a name="width" val="5"/>
-      <a name="enable" val="false"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:12:39"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="3288f655-ac0f-49bb-82ff-ab59a86861d4"/>
-      <a name="integrity" val="082f0b4cb16faaeb0170a1c50b6772fadcb92510"/>
-    </comp>
     <comp lib="0" loc="(590,230)" name="Constant">
       <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="2" loc="(940,240)" name="Multiplexer">
-      <a name="width" val="5"/>
-      <a name="enable" val="false"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:12:39"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="1a5cd881-d276-4f29-9c84-7ffc8fb2826f"/>
-      <a name="integrity" val="092b2c6898a80b2c6ea25f59d786656061cecf0d"/>
-    </comp>
-    <comp lib="0" loc="(380,310)" name="Constant"/>
-    <comp lib="0" loc="(1150,200)" name="Constant"/>
-    <comp lib="4" loc="(390,390)" name="Register">
-      <a name="width" val="3"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="1954e487-5d04-4356-945a-93dffd3110d0"/>
-      <a name="integrity" val="260fb2fd4e25a24c235a2968ff0d40a841927217"/>
-    </comp>
-    <comp lib="0" loc="(1280,180)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="8"/>
-      <a name="label" val="result"/>
-      <a name="labelloc" val="east"/>
-      <a name="radix" val="10unsigned"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 19:05:33"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="875194e6-f064-49fb-b605-49636fd7e443"/>
-      <a name="integrity" val="d6ec74287e656ddac0bd594fb06518ed0c92ebe7"/>
-    </comp>
-    <comp lib="4" loc="(390,260)" name="Register">
-      <a name="width" val="5"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="d1fe6bd5-5107-4d30-9b1d-79d436b6be0b"/>
-      <a name="integrity" val="c2da38a58662dad3085dc84ece2728ccd2a2a609"/>
-    </comp>
-    <comp lib="0" loc="(500,230)" name="Constant">
-      <a name="width" val="5"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(240,230)" name="Constant">
-      <a name="width" val="5"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="4" loc="(770,390)" name="Register">
-      <a name="width" val="3"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="43d1fc14-20bd-4a6c-b2e8-45bbb70be8a1"/>
-      <a name="integrity" val="83a51e8e1e9fd958a8d14a77f5f9e60e7272ae6e"/>
-    </comp>
-    <comp lib="4" loc="(770,140)" name="Register">
-      <a name="width" val="7"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="90f8222a-2b7e-4140-9411-7c49c8704193"/>
-      <a name="integrity" val="a4e63d2f8e458e2375360fa33a6b0f46fad77159"/>
-    </comp>
-    <comp lib="0" loc="(890,230)" name="Constant">
-      <a name="width" val="5"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(320,250)" name="Constant">
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(860,70)" name="Probe">
-      <a name="radix" val="10unsigned"/>
-      <a name="label" val="Etage2"/>
-    </comp>
-    <comp lib="0" loc="(150,500)" name="Pin">
-      <a name="label" val="clk"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:24:22"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="9a97f052-5f0a-46f0-8e4a-cb9e3422cbd0"/>
-      <a name="integrity" val="9703ddf6c4559251120318f27380c7ff0dd88459"/>
-    </comp>
-    <comp lib="0" loc="(670,130)" name="Constant">
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(980,230)" name="Constant">
-      <a name="width" val="2"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(380,180)" name="Constant"/>
-    <comp lib="0" loc="(160,290)" name="Pin">
-      <a name="width" val="5"/>
-      <a name="label" val="Op_5"/>
-      <a name="radix" val="10unsigned"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:08:29"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="3a576f5c-44ff-480f-a123-bb16527ca676"/>
-      <a name="integrity" val="5a53cde2b3d1adcc862828eca5a44777c5f9f718"/>
-    </comp>
-    <comp lib="0" loc="(760,440)" name="Constant"/>
-    <comp lib="0" loc="(340,230)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="incoming" val="6"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:13:16"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="d0fbf718-e184-4c88-8c44-c12ca6f464eb"/>
-      <a name="integrity" val="feac400487541c5ae1047a2aa1f6a7085b84eb06"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="1"/>
-    </comp>
-    <comp lib="4" loc="(390,130)" name="Register">
-      <a name="width" val="6"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="814c74da-2775-42d0-94f1-47c4c5ca5e02"/>
-      <a name="integrity" val="33c23bf3d423144071ed3018ef1735dac298da11"/>
-    </comp>
-    <comp lib="3" loc="(1090,180)" name="Adder">
-      <a name="width" val="7"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 18:01:33"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="ba65b531-61cf-498c-abaa-95f34ab78ff9"/>
-      <a name="integrity" val="be8f4ecbec23e58577a000696b4fdbf9f11228fb"/>
     </comp>
     <comp lib="0" loc="(740,170)" name="Splitter">
       <a name="facing" val="west"/>
@@ -580,26 +428,48 @@ end TCL_Generic;&#13;
       <a name="bit5" val="0"/>
       <a name="bit6" val="1"/>
     </comp>
-    <comp lib="0" loc="(500,400)" name="Splitter">
+    <comp lib="0" loc="(760,310)" name="Constant"/>
+    <comp lib="4" loc="(770,390)" name="Register">
+      <a name="width" val="3"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:15:36"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="43d1fc14-20bd-4a6c-b2e8-45bbb70be8a1"/>
+      <a name="integrity" val="83a51e8e1e9fd958a8d14a77f5f9e60e7272ae6e"/>
+    </comp>
+    <comp lib="3" loc="(1090,180)" name="Adder">
+      <a name="width" val="7"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 18:01:33"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="ba65b531-61cf-498c-abaa-95f34ab78ff9"/>
+      <a name="integrity" val="be8f4ecbec23e58577a000696b4fdbf9f11228fb"/>
+    </comp>
+    <comp lib="0" loc="(380,440)" name="Constant"/>
+    <comp lib="0" loc="(890,400)" name="Splitter">
       <a name="fanout" val="1"/>
       <a name="incoming" val="3"/>
       <a name="owner" val="aro2sol"/>
       <a name="date" val="01.05.16 17:13:16"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="ac2e3d61-e6e1-4bae-a76b-8c146eadd4b7"/>
-      <a name="integrity" val="f781a281b87a4fb513eed48b135cb95af84622a3"/>
+      <a name="uuid" val="d1fe38bb-f152-4097-88e3-012805d244b9"/>
+      <a name="integrity" val="1fd25825f68cc0885161819dbc8d4492722ba1f5"/>
       <a name="bit0" val="none"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="none"/>
+      <a name="bit1" val="none"/>
+      <a name="bit2" val="0"/>
     </comp>
-    <comp lib="2" loc="(550,240)" name="Multiplexer">
+    <comp lib="0" loc="(380,310)" name="Constant"/>
+    <comp lib="0" loc="(890,230)" name="Constant">
       <a name="width" val="5"/>
-      <a name="enable" val="false"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="4" loc="(390,390)" name="Register">
+      <a name="width" val="3"/>
       <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:12:39"/>
+      <a name="date" val="01.05.16 17:15:36"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="9d99e110-34bb-48bd-838c-d5bfb211d573"/>
-      <a name="integrity" val="100b1e387a81d494eb0fa0ac64406d6d47751174"/>
+      <a name="uuid" val="1954e487-5d04-4356-945a-93dffd3110d0"/>
+      <a name="integrity" val="260fb2fd4e25a24c235a2968ff0d40a841927217"/>
     </comp>
     <comp lib="0" loc="(160,420)" name="Pin">
       <a name="width" val="3"/>
@@ -627,48 +497,106 @@ end TCL_Generic;&#13;
       <a name="bit6" val="0"/>
       <a name="bit7" val="1"/>
     </comp>
-    <comp lib="3" loc="(700,170)" name="Adder">
-      <a name="width" val="6"/>
+    <comp lib="4" loc="(1160,150)" name="Register">
       <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 18:01:33"/>
+      <a name="date" val="01.05.16 17:15:36"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="7b7662f3-7983-4220-ac39-dea03da51f5f"/>
-      <a name="integrity" val="20430dc3447fbdc9c3e6ae4154e3f0143c08a74a"/>
+      <a name="uuid" val="0be137c9-8668-45c6-a787-5751d0b8dfc8"/>
+      <a name="integrity" val="97e03ba0c7e5412429658caf057b2f502ab7b27e"/>
     </comp>
-    <comp lib="0" loc="(760,190)" name="Constant"/>
-    <comp lib="0" loc="(380,440)" name="Constant"/>
-    <comp lib="0" loc="(500,70)" name="Probe">
+    <comp lib="0" loc="(1280,180)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="8"/>
+      <a name="label" val="result"/>
+      <a name="labelloc" val="east"/>
       <a name="radix" val="10unsigned"/>
-      <a name="label" val="Etage1"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 19:05:33"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="875194e6-f064-49fb-b605-49636fd7e443"/>
+      <a name="integrity" val="d6ec74287e656ddac0bd594fb06518ed0c92ebe7"/>
     </comp>
-    <comp lib="0" loc="(1060,140)" name="Constant">
+    <comp lib="0" loc="(1150,200)" name="Constant"/>
+    <comp lib="0" loc="(160,290)" name="Pin">
+      <a name="width" val="5"/>
+      <a name="label" val="Op_5"/>
+      <a name="radix" val="10unsigned"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:08:29"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="3a576f5c-44ff-480f-a123-bb16527ca676"/>
+      <a name="integrity" val="5a53cde2b3d1adcc862828eca5a44777c5f9f718"/>
+    </comp>
+    <comp lib="4" loc="(390,130)" name="Register">
+      <a name="width" val="6"/>
+      <a name="showInTab" val="true"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:15:36"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="814c74da-2775-42d0-94f1-47c4c5ca5e02"/>
+      <a name="integrity" val="33c23bf3d423144071ed3018ef1735dac298da11"/>
+    </comp>
+    <comp lib="0" loc="(150,500)" name="Pin">
+      <a name="label" val="clk"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:24:22"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="9a97f052-5f0a-46f0-8e4a-cb9e3422cbd0"/>
+      <a name="integrity" val="9703ddf6c4559251120318f27380c7ff0dd88459"/>
+    </comp>
+    <comp lib="0" loc="(240,230)" name="Constant">
+      <a name="width" val="5"/>
       <a name="value" val="0x0"/>
     </comp>
     <comp lib="0" loc="(1230,70)" name="Probe">
       <a name="radix" val="10unsigned"/>
       <a name="label" val="Etage3"/>
     </comp>
-    <comp lib="0" loc="(150,540)" name="Pin">
-      <a name="label" val="reset"/>
+    <comp lib="2" loc="(550,240)" name="Multiplexer">
+      <a name="width" val="5"/>
+      <a name="enable" val="false"/>
       <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:24:22"/>
+      <a name="date" val="01.05.16 17:12:39"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="8fa04265-6b79-42a7-8377-bacdfdad2284"/>
-      <a name="integrity" val="dff0444ca1cc0a52aebc4dbcad2f9191bc6dc9f9"/>
+      <a name="uuid" val="9d99e110-34bb-48bd-838c-d5bfb211d573"/>
+      <a name="integrity" val="100b1e387a81d494eb0fa0ac64406d6d47751174"/>
     </comp>
-    <comp lib="0" loc="(760,310)" name="Constant"/>
-    <comp lib="0" loc="(630,220)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="incoming" val="6"/>
+    <comp lib="0" loc="(220,400)" name="Splitter">
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="3"/>
       <a name="owner" val="aro2sol"/>
       <a name="date" val="01.05.16 17:13:16"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="4dc28c31-42f0-48b0-a8b7-eae25edd163f"/>
-      <a name="integrity" val="666cd926cd0f50491744b977ebebd7c0cbdf55e2"/>
-      <a name="bit2" val="1"/>
-      <a name="bit3" val="1"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
+      <a name="uuid" val="92bd6120-acb7-43cb-8003-602eaf431e71"/>
+      <a name="integrity" val="2ac4d3e46c808368e5e40b25fba6238b7b0eefa3"/>
+      <a name="bit1" val="none"/>
+      <a name="bit2" val="none"/>
+    </comp>
+    <comp lib="4" loc="(770,260)" name="Register">
+      <a name="width" val="5"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:15:36"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="cf56042e-6140-42d0-be31-4798156ea5b3"/>
+      <a name="integrity" val="1e1dbae70c3a6d75db5fb7c95a82244e0b89e047"/>
+    </comp>
+    <comp lib="0" loc="(500,70)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+      <a name="label" val="Etage1"/>
+    </comp>
+    <comp lib="2" loc="(940,240)" name="Multiplexer">
+      <a name="width" val="5"/>
+      <a name="enable" val="false"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:12:39"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="1a5cd881-d276-4f29-9c84-7ffc8fb2826f"/>
+      <a name="integrity" val="092b2c6898a80b2c6ea25f59d786656061cecf0d"/>
+    </comp>
+    <comp lib="0" loc="(980,230)" name="Constant">
+      <a name="width" val="2"/>
+      <a name="value" val="0x0"/>
     </comp>
     <comp lib="0" loc="(1020,220)" name="Splitter">
       <a name="facing" val="west"/>
@@ -685,32 +613,105 @@ end TCL_Generic;&#13;
       <a name="bit5" val="1"/>
       <a name="bit6" val="1"/>
     </comp>
-    <comp lib="4" loc="(770,260)" name="Register">
-      <a name="width" val="5"/>
+    <comp lib="0" loc="(760,440)" name="Constant"/>
+    <comp lib="3" loc="(700,170)" name="Adder">
+      <a name="width" val="6"/>
       <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:15:36"/>
+      <a name="date" val="01.05.16 18:01:33"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="cf56042e-6140-42d0-be31-4798156ea5b3"/>
-      <a name="integrity" val="1e1dbae70c3a6d75db5fb7c95a82244e0b89e047"/>
+      <a name="uuid" val="7b7662f3-7983-4220-ac39-dea03da51f5f"/>
+      <a name="integrity" val="20430dc3447fbdc9c3e6ae4154e3f0143c08a74a"/>
     </comp>
-    <comp lib="0" loc="(890,400)" name="Splitter">
+    <comp lib="0" loc="(500,400)" name="Splitter">
       <a name="fanout" val="1"/>
       <a name="incoming" val="3"/>
       <a name="owner" val="aro2sol"/>
       <a name="date" val="01.05.16 17:13:16"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="d1fe38bb-f152-4097-88e3-012805d244b9"/>
-      <a name="integrity" val="1fd25825f68cc0885161819dbc8d4492722ba1f5"/>
+      <a name="uuid" val="ac2e3d61-e6e1-4bae-a76b-8c146eadd4b7"/>
+      <a name="integrity" val="f781a281b87a4fb513eed48b135cb95af84622a3"/>
       <a name="bit0" val="none"/>
-      <a name="bit1" val="none"/>
-      <a name="bit2" val="0"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="none"/>
     </comp>
-    <comp lib="4" loc="(1160,150)" name="Register">
+    <comp lib="0" loc="(760,190)" name="Constant"/>
+    <comp lib="0" loc="(340,230)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="incoming" val="6"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:13:16"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="d0fbf718-e184-4c88-8c44-c12ca6f464eb"/>
+      <a name="integrity" val="feac400487541c5ae1047a2aa1f6a7085b84eb06"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="1"/>
+    </comp>
+    <comp lib="0" loc="(630,220)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="incoming" val="6"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:13:16"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="4dc28c31-42f0-48b0-a8b7-eae25edd163f"/>
+      <a name="integrity" val="666cd926cd0f50491744b977ebebd7c0cbdf55e2"/>
+      <a name="bit2" val="1"/>
+      <a name="bit3" val="1"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+    </comp>
+    <comp lib="0" loc="(500,230)" name="Constant">
+      <a name="width" val="5"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(1060,140)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(150,540)" name="Pin">
+      <a name="label" val="reset"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:24:22"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="8fa04265-6b79-42a7-8377-bacdfdad2284"/>
+      <a name="integrity" val="dff0444ca1cc0a52aebc4dbcad2f9191bc6dc9f9"/>
+    </comp>
+    <comp lib="2" loc="(290,240)" name="Multiplexer">
+      <a name="width" val="5"/>
+      <a name="enable" val="false"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:12:39"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="3288f655-ac0f-49bb-82ff-ab59a86861d4"/>
+      <a name="integrity" val="082f0b4cb16faaeb0170a1c50b6772fadcb92510"/>
+    </comp>
+    <comp lib="4" loc="(390,260)" name="Register">
+      <a name="width" val="5"/>
       <a name="owner" val="aro2sol"/>
       <a name="date" val="01.05.16 17:15:36"/>
       <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="0be137c9-8668-45c6-a787-5751d0b8dfc8"/>
-      <a name="integrity" val="97e03ba0c7e5412429658caf057b2f502ab7b27e"/>
+      <a name="uuid" val="d1fe6bd5-5107-4d30-9b1d-79d436b6be0b"/>
+      <a name="integrity" val="c2da38a58662dad3085dc84ece2728ccd2a2a609"/>
+    </comp>
+    <comp lib="4" loc="(770,140)" name="Register">
+      <a name="width" val="7"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:15:36"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="90f8222a-2b7e-4140-9411-7c49c8704193"/>
+      <a name="integrity" val="a4e63d2f8e458e2375360fa33a6b0f46fad77159"/>
+    </comp>
+    <comp lib="0" loc="(380,180)" name="Constant"/>
+    <comp lib="0" loc="(320,250)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(670,130)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(860,70)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+      <a name="label" val="Etage2"/>
     </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
@@ -759,15 +760,10 @@ end TCL_Generic;&#13;
     <wire from="(280,190)" to="(290,190)"/>
     <wire from="(820,140)" to="(890,140)"/>
     <wire from="(470,250)" to="(540,250)"/>
-    <comp lib="4" loc="(590,330)" name="ROM">
-      <a name="addrWidth" val="3"/>
-      <a name="dataWidth" val="3"/>
-      <a name="contents">addr/data: 3 3
-2 4 7 7
-</a>
-      <a name="label" val="vect_op_3"/>
-      <a name="labelvisible" val="true"/>
+    <comp lib="0" loc="(260,170)" name="Constant">
+      <a name="value" val="0x0"/>
     </comp>
+    <comp lib="0" loc="(260,190)" name="Constant"/>
     <comp lib="0" loc="(890,140)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -781,7 +777,6 @@ end TCL_Generic;&#13;
       <a name="uuid" val="2f8206fe-4c17-448a-836c-940de730b9b4"/>
       <a name="integrity" val="4ead343294d53d075aeb02c32b0b57abe779273d"/>
     </comp>
-    <comp lib="0" loc="(260,190)" name="Constant"/>
     <comp lib="0" loc="(890,390)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -795,6 +790,15 @@ end TCL_Generic;&#13;
       <a name="uuid" val="ac55bc00-780a-4285-be14-c3e5a7fac059"/>
       <a name="integrity" val="31b997b6fc73969f7658877e84b60d9b4188f49b"/>
     </comp>
+    <comp lib="4" loc="(590,330)" name="ROM">
+      <a name="addrWidth" val="3"/>
+      <a name="dataWidth" val="3"/>
+      <a name="contents">addr/data: 3 3
+2 4 7 7
+</a>
+      <a name="label" val="vect_op_3"/>
+      <a name="labelvisible" val="true"/>
+    </comp>
     <comp lib="4" loc="(290,140)" name="Counter">
       <a name="width" val="3"/>
       <a name="max" val="0x7"/>
@@ -806,14 +810,6 @@ end TCL_Generic;&#13;
 3 8 9 1f
 </a>
     </comp>
-    <comp lib="0" loc="(240,160)" name="Pin">
-      <a name="label" val="reset"/>
-      <a name="owner" val="aro2sol"/>
-      <a name="date" val="01.05.16 17:24:22"/>
-      <a name="version" val="2.13.18.t"/>
-      <a name="uuid" val="e33ef0c5-182a-4000-b123-4beae4c18ef4"/>
-      <a name="integrity" val="1cf1df2c324e34b6f503dc91d66dc7e61972deb1"/>
-    </comp>
     <comp lib="0" loc="(240,220)" name="Pin">
       <a name="label" val="clk"/>
       <a name="owner" val="aro2sol"/>
@@ -822,8 +818,13 @@ end TCL_Generic;&#13;
       <a name="uuid" val="73e0062e-57c7-4651-a4bc-963e7b96517a"/>
       <a name="integrity" val="fb50f32bc670fd2b4ef03fcfe4ac815746ef54fb"/>
     </comp>
-    <comp lib="0" loc="(260,170)" name="Constant">
-      <a name="value" val="0x0"/>
+    <comp lib="0" loc="(240,160)" name="Pin">
+      <a name="label" val="reset"/>
+      <a name="owner" val="aro2sol"/>
+      <a name="date" val="01.05.16 17:24:22"/>
+      <a name="version" val="2.13.18.t"/>
+      <a name="uuid" val="e33ef0c5-182a-4000-b123-4beae4c18ef4"/>
+      <a name="integrity" val="1cf1df2c324e34b6f503dc91d66dc7e61972deb1"/>
     </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
