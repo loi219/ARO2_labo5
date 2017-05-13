@@ -183,9 +183,23 @@ Légende des couleurs:
     \label{fig:et2_pic}
 \end{figure}
 Les résultats incorrects sont entourés en rouge.
+Ces erreurs sont dûes à des aléas causées par des dépendances. Ce sont 3 opérations qui causent ces aléas:
+\begin{itemize}
+    \item ADD (ligne 10), l'aléa est de type Read After Write. En effet, il y a lecture du registre r4 juste après une instruction d'écriture dans le registre r4.
+    \item SUB (ligne 13), l'aléa est de type Read After Write. En effet, il y a lecture du registre r1 juste après une instruction d'écriture dans le registre r1.
+    \item ORR (ligne 31), l'aléa est de type Read After Write. En effet, il y a lecture du registre r5 juste après une instruction d'écriture dans le registre 5.
+\end{itemize}
 \subsubsection{Programme corrigé}
 \lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt2Mod.S}
 Des instructions NOP ont été rajoutées avant l'înstruction ADD, l'instruction SUB et l'instruction ORR.
+Voici un shéma qui illustre la correction des aléas grâce à l'instruction NOP:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{src/ZELE.jpeg}
+    \captionof{figure}{Instructions NOP}
+    \label{fig:nope_zele_pic}
+\end{figure}
+Les 3 instructions NOP permettent à la partie DECODE (ID) de la deuxième instruction ADD de débuter après la partie WRITE BACK (WB) de la première instruction ADD.
 \subsubsection{Chronogramme}
 \begin{figure}[H]
     \centering
@@ -194,4 +208,5 @@ Des instructions NOP ont été rajoutées avant l'înstruction ADD, l'instructio
     \label{fig:chrono_et2_corr_pic}
 \end{figure}
 Pour la légende des couleurs, voir la Figure \ref{fig:et2_pic}.
+\\Les résultats sont maintenant corrects.
 \end{document}
