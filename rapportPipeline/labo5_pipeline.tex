@@ -149,5 +149,49 @@
 \end{titlepage}
 
 \section{Objectifs du laboratoire}
-
+Comprendre le fonctionnement d'un processeur dit "pipeliné", à l'aide d'un processeur PRODIS "pipeliné" fourni. Modifier le circuit pour ajouter des mécanismes de détection des aléas et d'arrêt du pipeline.
+\subsection{Étape 1}
+\subsubsection{Objectif}
+Exécuter le programme fourni, et relever un chronogramme.
+\subsubsection{Programme fourni}
+\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt1.S}
+\subsubsection{Chronogramme relevé}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{src/CHRONO_ET1_COL2.png}
+    \captionof{figure}{Chonogramme}
+    \label{fig:chrono_et1_pic}
+\end{figure}
+En jaune, le résulat de l'instruction ADD (ligne 11 du progamme), en vert, le résultat de l'instruction LDRH (ligne 13), et en rouge, le résultat de l'instruction AND (ligne 23).
+\subsection{Étape 2}
+\subsubsection{Objectif}
+Exécuter le programme fourni, relever un chronogramme. Repérer les erreurs dûes aux aléas et leurs causes. Modifier le programme en ajoutant des instructions NOP afin de supprimer les aléas.
+\subsubsection{Programme fourni}
+\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt2.S}
+\subsubsection{Chronogramme}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_V2_COL.png}
+    \captionof{figure}{Chonogramme}
+    \label{fig:chrono_et2_pic}
+\end{figure}
+Légende des couleurs:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.2\textwidth]{src/ET2.png}
+    \captionof{figure}{Légende}
+    \label{fig:et2_pic}
+\end{figure}
+Les résultats incorrects sont entourés en rouge.
+\subsubsection{Programme corrigé}
+\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt2Mod.S}
+Des instructions NOP ont été rajoutées avant l'înstruction ADD, l'instruction SUB et l'instruction ORR.
+\subsubsection{Chronogramme}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_CORR_COL.png}
+    \captionof{figure}{Chonogramme}
+    \label{fig:chrono_et2_corr_pic}
+\end{figure}
+Pour la légende des couleurs, voir la Figure \ref{fig:et2_pic}.
 \end{document}
