@@ -5,7 +5,8 @@
 \usepackage[english,french]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb,amsfonts,textcomp}
-\usepackage{color}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{array}
 \usepackage{hhline}
 \usepackage{hyperref}
@@ -24,6 +25,7 @@
 \usepackage[top=25mm,bottom=25mm,right=25mm,left=25mm]{geometry} 
 \usepackage[export]{adjustbox}
 \usepackage{listings}
+\usepackage{enumitem}
 
 
 %Définition des couleurs
@@ -154,7 +156,7 @@ Comprendre le fonctionnement d'un processeur dit "pipeliné", à l'aide d'un pro
 \subsubsection{Objectif}
 Exécuter le programme fourni, et relever un chronogramme.
 \subsubsection{Programme fourni}
-\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt1.S}
+\lstinputlisting[caption=main.S original,label=et1a]{../labo5/mains/mainEt1.S}
 \subsubsection{Chronogramme relevé}
 \begin{figure}[H]
     \centering
@@ -167,7 +169,7 @@ En jaune, le résulat de l'instruction ADD (ligne 11 du progamme), en vert, le r
 \subsubsection{Objectif}
 Exécuter le programme fourni, relever un chronogramme. Repérer les erreurs dûes aux aléas et leurs causes. Modifier le programme en ajoutant des instructions NOP afin de supprimer les aléas.
 \subsubsection{Programme fourni}
-\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt2.S}
+\lstinputlisting[caption=main.S original ,label=et1a]{../labo5/mains/mainEt2.S}
 \subsubsection{Chronogramme}
 \begin{figure}[H]
     \centering
@@ -175,13 +177,19 @@ Exécuter le programme fourni, relever un chronogramme. Repérer les erreurs dû
     \captionof{figure}{Chonogramme}
     \label{fig:chrono_et2_pic}
 \end{figure}
-Légende des couleurs:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.2\textwidth]{src/ET2.png}
-    \captionof{figure}{Légende}
-    \label{fig:et2_pic}
-\end{figure}
+
+\paragraph{Légende des couleurs:}\mbox{}\\
+\begin{itemize}[before=\ttfamily\bfseries]
+   \item \colorbox{yellow}{add r4,r0,\#2}
+   \item \colorbox{Salmon}{add r3,r4,r1}
+   \item \colorbox{Cyan}{ldrh r1,[r4,\#3*2]}
+   \item \colorbox{green}{sub r5,r1,\#5}
+   \item \colorbox{Orchid}{mov r0,\#0xFF}
+   \item \colorbox{Dandelion}{mov r5,\#0xFF}
+   \item \colorbox{Green}{orr r0,r5}
+\end{itemize}
+
+
 Les résultats incorrects sont entourés en rouge.
 Ces erreurs sont dûes à des aléas causées par des dépendances. Ce sont 3 opérations qui causent ces aléas:
 \begin{itemize}
@@ -190,7 +198,7 @@ Ces erreurs sont dûes à des aléas causées par des dépendances. Ce sont 3 op
     \item ORR (ligne 31), l'aléa est de type Read After Write. En effet, il y a lecture du registre r5 juste après une instruction d'écriture dans le registre 5.
 \end{itemize}
 \subsubsection{Programme corrigé}
-\lstinputlisting[caption=main.S,label=et1a]{../labo5/mains/mainEt2Mod.S}
+\lstinputlisting[caption=main.S corrigé,label=et1a]{../labo5/mains/mainEt2Mod.S}
 Des instructions NOP ont été rajoutées avant l'înstruction ADD, l'instruction SUB et l'instruction ORR.
 Voici un shéma qui illustre la correction des aléas grâce à l'instruction NOP:
 \begin{figure}[H]
@@ -207,6 +215,6 @@ Les 3 instructions NOP permettent à la partie DECODE (ID) de la deuxième instr
     \captionof{figure}{Chonogramme}
     \label{fig:chrono_et2_corr_pic}
 \end{figure}
-Pour la légende des couleurs, voir la Figure \ref{fig:et2_pic}.
-\\Les résultats sont maintenant corrects.
+Pour la légende des couleurs, voir la liste plus haut \\
+Les résultats sont maintenant corrects.
 \end{document}
