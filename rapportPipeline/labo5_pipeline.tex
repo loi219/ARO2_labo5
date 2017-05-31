@@ -152,12 +152,12 @@
 
 \section{Objectifs du laboratoire}
 Comprendre le fonctionnement d'un processeur dit "pipeliné", à l'aide d'un processeur PRODIS "pipeliné" fourni. Modifier le circuit pour ajouter des mécanismes de détection des aléas et d'arrêt du pipeline.
-\subsection{Étape 1}
-\subsubsection{Objectif}
+\section{Étape 1}
+\subsection{Objectif}
 Exécuter le programme fourni, et relever un chronogramme.
-\subsubsection{Programme fourni}
+\subsection{Programme fourni}
 \lstinputlisting[caption=main.S original,label=et1a]{../labo5/mains/mainEt1.S}
-\subsubsection{Chronogramme relevé}
+\subsection{Chronogramme relevé}
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{src/CHRONO_ET1_COL2.png}
@@ -165,16 +165,16 @@ Exécuter le programme fourni, et relever un chronogramme.
     \label{fig:chrono_et1_pic}
 \end{figure}
 En jaune, le résulat de l'instruction ADD (ligne 11 du progamme), en vert, le résultat de l'instruction LDRH (ligne 13), et en rouge, le résultat de l'instruction AND (ligne 23).
-\subsection{Étape 2}
-\subsubsection{Objectif}
+\section{Étape 2}
+\subsection{Objectif}
 Exécuter le programme fourni, relever un chronogramme. Repérer les erreurs dûes aux aléas et leurs causes. Modifier le programme en ajoutant des instructions NOP afin de supprimer les aléas.
 \subsubsection{Programme fourni}
 \lstinputlisting[caption=main.S original ,label=et1a]{../labo5/mains/mainEt2.S}
-\subsubsection{Chronogramme}
+\subsection{Chronogramme}
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_V2_COL.png}
-    \captionof{figure}{Chonogramme}
+    \captionof{figure}{Chonogramme avec main.S original}
     \label{fig:chrono_et2_pic}
 \end{figure}
 
@@ -197,7 +197,7 @@ Ces erreurs sont dûes à des aléas causées par des dépendances. Ce sont 3 op
     \item SUB (ligne 13), l'aléa est de type Read After Write. En effet, il y a lecture du registre r1 juste après une instruction d'écriture dans le registre r1.
     \item ORR (ligne 31), l'aléa est de type Read After Write. En effet, il y a lecture du registre r5 juste après une instruction d'écriture dans le registre 5.
 \end{itemize}
-\subsubsection{Programme corrigé}
+\subsection{Programme corrigé}
 \lstinputlisting[caption=main.S corrigé,label=et1a]{../labo5/mains/mainEt2Mod.S}
 Des instructions NOP ont été rajoutées avant l'înstruction ADD, l'instruction SUB et l'instruction ORR.
 Voici un shéma qui illustre la correction des aléas grâce à l'instruction NOP:
@@ -211,13 +211,71 @@ Les 3 instructions NOP permettent à la partie DECODE (ID) de la deuxième instr
 \subsubsection{Chronogramme}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_CORR_COL.png}
-    \captionof{figure}{Chonogramme}
+    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_V3.png}
+    \captionof{figure}{Chonogramme avec main.S corrigé}
     \label{fig:chrono_et2_corr_pic}
 \end{figure}
 Pour la légende des couleurs, voir la liste plus haut \\
 Les résultats sont maintenant corrects.
-\subsection{Étape 3}
-\subsubsection{Objectif}
+\section{Étape 3}
+\subsection{Objectif}
 Modifier le circuit afin de détecter les aléas et stopper le pipeline si nécessaire.
+\paragraph{Remarque:}nous avons pas réussi à atteindre les objectifs pour cette étape. Une explication est donnée en fin de chapitre
+
+
+\subsection{Circuit créé}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=.8\textwidth]{src/ALEAS_jacta_est.png}
+   \captionof{figure}{Circuit ALEAS}
+\end{figure}
+La figure ci-dessus montre notre circuit pour détecter les aléas. TODO expliquer pour r1 r2 r3\\
+Un registre a été mis au bout afin d'attendre un coup de clock supplémentaire que la commande passe.\\
+Dans le cas d'une instruction 46c0 (NOP) ou 0000, elles ne sont pas considérées comme aléa
+
+\subsection{Modifications du circuit}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=.8\textwidth]{src/Decode_ALEAS.png}
+   \captionof{figure}{Partie du Decode}
+\end{figure}
+Dans cette partie du Decode nous avons utilisé les différentes valeures que nous retourne le pipeline et nous permet donc de détecter les aléas de données.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=.8\textwidth]{src/ALEAS_saut.png}
+   \captionof{figure}{Aléas de contrôle}
+\end{figure}
+Un système pour détecter la une instruction branch est déjà en place, une sortie \textbf{isalea\_branch} à été placé afin de pouvoir l'utiliser convenablement.\\
+En sortie du Decode ont été ajouté \textbf{isalea} et \textbf{isalea\_branch} qui seront employées par le circuit Fetch.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=.8\textwidth]{src/FETCH.png}
+   \captionof{figure}{Circuit FETCH}
+\end{figure}
+
+C'est la partie qui va permettre de bloquer le circuit afin de passer les aléas.\\
+Dans le cercle noir, il a y les entrée nouvellement crée et s'active lorsqu'un aléa survient.\\
+Le cercle jaune est active une instruction 46c0, ce qui correspont à un NOP et donc va bloquer le circuit afin de libérer les différents éléments du pipeline.\\
+
+La modification faite sur la porte AND (cercle bleu) permet de désactiver la partie Decode quand un aléa est détecté par le circuit. Le cercle vert effectue une opération semblable, mais permet d'activer l'entre 10 du mux et donc d'activer l'instruction de saut.
+
+\subsection{Objectifs non-atteint}
+Le chronogrammes ci-dessous est un exemple du non-fonctionnement de notre circuit. En effet, nous avons été contraint de rendre le projet inabouti.\\
+Les éléments demandés ont été réalisé avec le plus d'entrain possible (voir Annexes) mais notre circuit ne détecte pas correctement les aléas.\\
+Le saut se fait bel et bien mais il retourne à l'instruction 88e1, alors qu'il devrait sauter à 0x40 et les registres 0,1 ne sont jamais écrit.\\
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=.8\textwidth]{src/CHRONO_ET3.png}
+   \captionof{figure}{Exemple de chronogramme}
+\end{figure}
+Dans cette exemple, les registres 0 et 1 sont vide, et à l'instruction e103, le saut est retournée sur l'instruction de 2 coups d'horloge avant.
+
+
+
+
+
+
+
 \end{document}
