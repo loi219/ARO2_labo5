@@ -5,8 +5,8 @@ v2.0 raw
  #Ce fichier peut etre importe
  #directement dans la RAM d'instruction du processeur
  #PRODIS1 dans logisim.
-2020 2104 22ab 2307 240c 2500 1c84 1863
-8104 88e1 1f4d e013 20ff 25ff 46c0 46c0
-46c0 0000 0000 0000 0000 0000 0000 0000
+2020 2104 22ab 2307 240c 2500 1c84 46c0
+46c0 46c0 1863 8104 88e1 46c0 46c0 46c0
+1f4d e00d 46c0 46c0 20ff 25ff 0000 0000
 0000 0000 0000 0000 0000 0000 0000 0000
 4328                                   

@@ -31,23 +31,18 @@ sub  r5,r1,#5
 
 @Saut à la partie "fin"
 b    fin        
-
-@Ecriture de valeurs dans r0 et r5
-mov  r0,#0xFF         
-mov  r5,#0xFF         
 @--Suppression des aléas
-nop 
 nop 
 nop 
 @---
 
+@Ecriture de valeurs dans r0 et r5
+mov  r0,#0xFF         
+mov  r5,#0xFF         
+
 @Partie "fin"
 .org 0x40 
 fin:  
-@---Suppression des aléas
-nop
-nop
-nop
----
+
 @Comparaison entre r0 et r5
 orr  r0,r5
