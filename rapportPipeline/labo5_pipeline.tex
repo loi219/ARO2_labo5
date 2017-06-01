@@ -274,9 +274,7 @@ Dans cette exemple, les registres 0 et 1 sont vide, et à l'instruction e103, le
 
 \section{Conclusion}
 Les parties 1 et 2 ont permis à la compréhensions de l'utilisation d'un pipeline et des problèmes supplémentaires qu'il peut engendrer. Les aléas pouvant être géré le, même par des NOP démontre un gain de temps énorme grâce à la parallélisation des opérations entre les différentes parties.\\
-La partie 3...
-
-
+La partie 3 nous a posé pas mal de problèmes, en effet le circuit modifié ne fonctionne pas correctement. Le saut se fait, mal certe mais il se fait et les instructions \textbf{mov  r0,\#0xFF, mov r0,\#0xFF} ne s'exécute pas ou encore des registres ne sont pas écrit. La provenance des bugs n'a pas été trouvée donc nous avons décidé de montrer ce que nous avons tenté de faire et rendre le projet non-fonctionnel pour l'étape 3.
 
 
 
