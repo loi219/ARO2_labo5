@@ -211,7 +211,7 @@ Les 3 instructions NOP permettent à la partie DECODE (ID) de la deuxième instr
 \subsubsection{Chronogramme}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_V3.png}
+    \includegraphics[width=.8\textwidth]{src/CHRONO_ET2_V3_COL.png}
     \captionof{figure}{Chonogramme avec main.S corrigé}
     \label{fig:chrono_et2_corr_pic}
 \end{figure}
@@ -229,9 +229,36 @@ Modifier le circuit afin de détecter les aléas et stopper le pipeline si néce
    \includegraphics[width=.8\textwidth]{src/ALEAS_jacta_est.png}
    \captionof{figure}{Circuit ALEAS}
 \end{figure}
-La figure ci-dessus montre notre circuit pour détecter les aléas. TODO expliquer pour r1 r2 r3\\
+
+
+\paragraph{Définition des entrées:}
+\begin{itemize}
+    \item     reg\_n/m: registres sources
+    \item     r0,r1,r2: registre destination à différents instants du pipeline
+    \item     imm: indique si la valeur est immédiate
+    \item     INST: instruction
+    \item     CLK: horloge
+    \item     RST: reset
+\end{itemize}
+
+\paragraph{Définition des sorties:}
+\begin{itemize}
+    \item     is\_alea: indique s'il y a un aléa
+\end{itemize}
+\medskip
+
+Il y a plusieurs types d'aléas à détecter. Tout d'abord, les Read After Write (RAW - qui est un aléa de donnée), qui posent problème. Notre idée était de comparer les registres destinations et les registres sources, afin de bloquer le circuit lorqu'ils étaient identiques. Si la valeur était immédiate, alors la comparaison n'était pas pris en compte. Mais, comme expliqué plus loin, nous n'y sommes pas parvenu correctement.
+Il y a aussi les aléas causés par les instructions branch (aléa de contrôle), qui demandent aussi un arrêt du pipeline. Une sortie "is\_branch" existe déjà dans le circuit.
+\\
+
+
+La figure ci-dessus montre notre circuit pour détecter les aléas. Les aléas sont détectés au moment du DECODE, puisque c'est à ce moment-là que la valeur des registres utilisés va être connue, et que l'instruction va être décodée. Ainsi, le bloc ALEA créé a été placé à cet endroit, avec des entrées choisies en conséquence.\\
+Trois registres dans le bloc DECODE sont utiles à la détection des aléas de données. Il s'agit des registres que nous avons renommés r0, r1 et r2. Ces regitres vont contenir les registres destinations de l'instruction. r0 va contenir la valeur du registre destination de l'instruction qui arrivera dans un coup de clock; r1 va contenir la valeur du registre destination de l'instruction qui arrivera dans deux coups de clock, et r3 va contenir la valeur du registre desination actuel. L'idée était de se servir de ces registres pour effectuer les comparaisons avec les registres source et détecter les aléas, puis d'utiliser le bloc ALEA pour permettre ou non l'arrêt du circuit dans le FETCH (où des ENABLE concernant diverses parties du pipeline étaient déjà placés) \\
+
+Ainsi, dans le circuit, chaque registre est comparé aux deux registres sources pour voir s'ils sont identiques, à l'aide de \textit{comparator}= . Ensuite, si une valeur immédiate est utilisée, alors il n'y aura pas d'aléa de type RAW.
+
 Un registre a été mis au bout afin d'attendre un coup de clock supplémentaire que la commande passe.\\
-Dans le cas d'une instruction 46c0 (NOP) ou 0000, elles ne sont pas considérées comme aléa
+Dans le cas d'une instruction 46c0 (NOP) ou 0000, elles ne sont pas considérées comme aléa.
 
 \subsection{Modifications du circuit}
 \begin{figure}[H]
@@ -263,19 +290,17 @@ La modification faite sur la porte AND (cercle bleu) permet de désactiver la pa
 
 \subsection{Objectifs non-atteint}
 Le chronogrammes ci-dessous est un exemple du non-fonctionnement de notre circuit. En effet, nous avons été contraint de rendre le projet inabouti.\\
-Les éléments demandés ont été réalisé avec le plus d'entrain possible (voir Annexes) mais notre circuit ne détecte pas correctement les aléas.\\
-Le saut se fait bel et bien mais il retourne à l'instruction 88e1, alors qu'il devrait sauter à 0x40 et les registres 0,1 ne sont jamais écrit.\\
+Les éléments demandés ont été réalisés avec le plus d'entrain possible, et nous avons recommencé plusieurs fois le circuit de détection des aléas, mais sans succè. Notre circuit ne détecte pas correctement les aléas.\\
+Le saut se fait bel et bien mais il retourne à l'instruction 88e1, alors qu'il devrait sauter à 0x40 et les registres 0,1 ne sont jamais écrits.\\
 \begin{figure}[H]
    \centering
    \includegraphics[width=.8\textwidth]{src/CHRONO_ET3.png}
    \captionof{figure}{Exemple de chronogramme}
 \end{figure}
-Dans cette exemple, les registres 0 et 1 sont vide, et à l'instruction e103, le saut est retournée sur l'instruction de 2 coups d'horloge avant.
+Dans cet exemple, les registres 0 et 1 sont vide, et à l'instruction e103, le saut est retourné sur l'instruction de 2 coups d'horloge avant.
 
 \section{Conclusion}
-Les parties 1 et 2 ont permis à la compréhensions de l'utilisation d'un pipeline et des problèmes supplémentaires qu'il peut engendrer. Les aléas pouvant être géré le, même par des NOP démontre un gain de temps énorme grâce à la parallélisation des opérations entre les différentes parties.\\
-La partie 3 nous a posé pas mal de problèmes, en effet le circuit modifié ne fonctionne pas correctement. Le saut se fait, mal certe mais il se fait et les instructions \textbf{mov  r0,\#0xFF, mov r0,\#0xFF} ne s'exécute pas ou encore des registres ne sont pas écrit. La provenance des bugs n'a pas été trouvée donc nous avons décidé de montrer ce que nous avons tenté de faire et rendre le projet non-fonctionnel pour l'étape 3.
-
-
+Les parties 1 et 2 ont permis à la compréhension de l'utilisation d'un pipeline et des problèmes supplémentaires qu'il peut engendrer. Les aléas pouvant être géré le, même par des NOP démontre un gain de temps énorme grâce à la parallélisation des opérations entre les différentes parties.\\
+Il a été assez frustrant de ne pas pouvoir aboutir l'étape 3, surtout que nous avons bien compris le fonctionnement du pipeline, ainsi que la gestion théorique des aléas et ce qui pouvaient les provoquer. Notre difficulté s'est trouvée dans le fait de le traduire pratiquement sur Logisim. Nous pensons que nous étions sur la bonne piste avec la comparaison entre les registres sources et les 3 registres présents dans le DECODE et mis à notre disposition.
 
 \end{document}
